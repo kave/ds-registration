@@ -1,0 +1,9 @@
+Django
+psycopg2
+gunicorn
+Fabric
+boto
+django-bower
+django-pipeline
+django-storages
+dj-database-url

@@ -1,0 +1,24 @@
+{
+  "name": "registration",
+  "version": "0.0.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "contributors": [],
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "engines": {
+    "node": "^0.12.1",
+    "npm": "^2.1.18"
+  },
+  "dependencies": {
+    "bower": "^1.5.3"
+  },
+  "scripts": {
+    "postinstall": "bower install"
+  }
+}
