@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 
     'core',
+    'storages'
 )
 
 EMAIL_SUBJECT_PREFIX = '[registration] '
