@@ -6,7 +6,7 @@ class Registration(models.Model):
     last_name = models.CharField(max_length=100, blank=False)
     email = models.EmailField(blank=False)
     phone = models.TextField(max_length=15, blank=False)
-    can_mode = models.BooleanField(blank=False)
+    can_model = models.BooleanField(blank=False)
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name

@@ -18,9 +18,14 @@ class RegisterView(TemplateView):
         pass
 
     def post(self, request):
-        context = RequestContext(request)
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
+            return HttpResponseRedirect('/success/')
 
         return HttpResponseRedirect('/')
+
+
+def success(request):
+    context = RequestContext(request)
+    return render_to_response('success.html', context)

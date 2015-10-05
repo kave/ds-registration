@@ -3,6 +3,7 @@
 import os
 import sys
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 
 # Modify sys.path to include the lib directory
@@ -73,6 +74,8 @@ MEDIA_URL = ''
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
@@ -90,7 +93,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-    'pipeline.finders.PipelineFinder',
+    'djangobower.finders.BowerFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -126,14 +129,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'djangobower',
-    'pipeline',
+    'storages',
 
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 
     'core',
-    'storages'
+
 )
 
 EMAIL_SUBJECT_PREFIX = '[registration] '
@@ -172,39 +175,3 @@ LOGGING = {
 # -------- Bower Configuration ------------ #
 BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_ROOT, 'core/static')
 
-# -------- Django Pipeline Configurations ------------ #
-STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
-
-# Default behavior is not to Compress
-PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
-
-# Concat all CSS files.
-PIPELINE_CSS = {
-    # Project libraries.
-    'css': {
-        'source_filenames': (
-            'bower_components/bootstrap/dist/css/bootstrap.css',
-            'bower_components/font-awesome/css/font-awesome.css',
-            'css/*.css',
-        ),
-        # Compress passed libraries and have
-        # the output in`css/css.min.css`.
-        'output_filename': 'css/css.min.css',
-        'variant': 'datauri',
-    }
-}
-# Concat all JavaScript files.
-PIPELINE_JS = {
-    # Project JavaScript libraries.
-    'js': {
-        'source_filenames': (
-            'bower_components/jquery/dist/jquery.js',
-            'bower_components/bootstrap/dist/js/bootstrap.js',
-            'bower_components/underscore/underscore.js',
-            'js/compress/*.js',
-        ),
-        # Compress all passed files into `js/js.min.js`.
-        'output_filename': 'js/js.min.js',
-    }
-}
