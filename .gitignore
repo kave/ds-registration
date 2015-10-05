@@ -1,8 +1,10 @@
 /.vagrant
 *.pyc
 /registration/settings/local.py
-bower_components
+
 .DS_Store
 MYENV
 node_modules
 .idea
+core/static/bower_components
+static/*
