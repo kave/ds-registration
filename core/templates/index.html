@@ -58,7 +58,8 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="post" class="registration-form">
+			                    <form role="form" action="/register/" method="post" class="registration-form">
+                                    {% csrf_token %}
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-first-name">First name</label>
 			                        	<input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
