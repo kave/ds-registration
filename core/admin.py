@@ -1,16 +1,9 @@
 from django.contrib import admin
-from django.contrib.auth.models import User
-from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
-
 from . import models
-
-from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm
-from django import forms
 
 
 class RegisterAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("get_name", "email", "phone", "can_model", "create_date")
 
 
 admin.site.register(models.Registration, RegisterAdmin)

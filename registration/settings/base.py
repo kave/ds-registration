@@ -2,6 +2,7 @@
 
 import os
 import sys
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
@@ -15,6 +16,10 @@ PIPELINE_ENABLED = True
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
 )
 
 DATABASES = {
@@ -130,6 +135,7 @@ INSTALLED_APPS = (
 
     'djangobower',
     'storages',
+    'suit',
 
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
